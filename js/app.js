@@ -2,8 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var cash = document.querySelector('#cash');
   var rate = document.querySelector('#rate');
   var weight = document.querySelector('#weight');
-  var tenner = document.querySelector('button');
+  var tenner = document.querySelector('#tenner');
   var radios = document.querySelector('#radios');
+  var share = document.querySelector('#share');
 
   var cashInput = function() {
     var value = cash.value;
@@ -56,5 +57,13 @@ document.addEventListener('DOMContentLoaded', function() {
     cashInput();
 
     e.preventDefault();
+  });
+
+  share.addEventListener('click', function() {
+    var width = share.getAttribute('data-width'), height = share.getAttribute('data-height'), url = share.getAttribute('data-url');
+    var wx = (screen.width - width) >> 1, wy = (screen.height - height) >> 1;
+
+    window.open(share.getAttribute('data-url'), '', "top=" + wy + ",left=" + wx + ",width=" + width + ",height=" + height);
+    return false;
   });
 });
