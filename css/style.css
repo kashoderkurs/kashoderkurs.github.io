@@ -39,21 +39,6 @@ h1 {
   line-height: 22px;
 }
 
-@media only screen and (max-width: 800px) {
-  .input {
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  input[type="number"] {
-    max-width: 230px;
-  }
-
-  body {
-    vertical-align: top;
-  }
-}
-
 input[type="number"] {
   padding: 15px 10px;
   max-width: 150px;
@@ -62,6 +47,21 @@ input[type="number"] {
   text-align: center;
   font-size: 20px;
   font-family: 'Open Sans', sans-serif;
+}
+
+@media only screen and (max-width: 800px) {
+  .input {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  input[type="number"] {
+    max-width: 260px;
+  }
+
+  body {
+    vertical-align: top;
+  }
 }
 
 input:focus {
