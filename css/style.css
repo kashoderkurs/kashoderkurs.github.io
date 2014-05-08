@@ -39,6 +39,13 @@ h1 {
   line-height: 22px;
 }
 
+@media only screen and (max-width: 600px) {
+  .input {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
 input[type="number"] {
   padding: 15px 10px;
   max-width: 150px;
@@ -74,4 +81,18 @@ button {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+#share {
+  display: block;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  background: none;
+  border: 0;
+  background: #000;
+  color: #FFF;
+  margin: 0;
+  padding: 10px;
 }
