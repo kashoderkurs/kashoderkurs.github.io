@@ -44,6 +44,10 @@ h1 {
     margin-right: 0;
     margin-bottom: 20px;
   }
+
+  input[type="number"] {
+    max-width: 230px;
+  }
 }
 
 input[type="number"] {
