@@ -21,16 +21,16 @@
       </div>
       <div>
         <div class="input">
-          <input type="number" id="cash" min="5" step="5" placeholder="Geld" value="150" required>
+          <input type="number" id="cash" min="5" step="5" placeholder="Geld" value="150" required tabindex="1">
           <label for="cash">Cash</label>
-          <button id="tenner">10</button>
+          <button id="tenner" tabindex="-1">10</button>
         </div>
         <div class="input">
-          <input type="number" id="rate" placeholder="Kurs" min="0" value="6">
+          <input type="number" id="rate" placeholder="Kurs" min="0" value="6" tabindex="2">
           <label for="rate">Price per unit</label>
         </div>
         <div class="input">
-          <input type="number" id="weight" placeholder="Gewicht" min="0" value="25">
+          <input type="number" id="weight" placeholder="Gewicht" min="0" value="25" tabindex="3">
           <label for="weight">1 unit</label>
         </div>
       </div>
