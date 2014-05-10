@@ -105,7 +105,8 @@ button {
     max-width: 260px;
   }
 
-  button {
+  #share {
     position: relative;
+    margin-top: 60px;
   }
 }
