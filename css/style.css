@@ -50,25 +50,6 @@ input[type="number"] {
   font-family: 'Open Sans', sans-serif;
 }
 
-@media only screen and (max-width: 800px) {
-  body {
-    vertical-align: top;
-  }
-
-  .input {
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  input[type="number"] {
-    max-width: 260px;
-  }
-
-  button {
-    position: relative;
-  }
-}
-
 input:focus {
   outline: 0;
 }
@@ -108,4 +89,23 @@ button {
   color: #FFF;
   margin: 0;
   padding: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    vertical-align: top;
+  }
+
+  .input {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  input[type="number"] {
+    max-width: 260px;
+  }
+
+  button {
+    position: relative;
+  }
 }
