@@ -69,6 +69,20 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
   });
 
+  var playableAudio = document.querySelectorAll('[data-type="audio"]');
+  Array.prototype.forEach.call(playableAudio, function(playableElement) {
+    var src = playableElement.getAttribute('data-src');
+    var audio = new Audio(src);
+
+    playableElement.style.cursor = 'pointer';
+
+    playableElement.addEventListener('click', function() {
+      audio.pause();
+      audio.currentTime = 0;
+      audio.play();
+    });
+  });
+
   share.addEventListener('click', function() {
     var width = share.getAttribute('data-width'), height = share.getAttribute('data-height'), url = share.getAttribute('data-url');
     var wx = (screen.width - width) >> 1, wy = (screen.height - height) >> 1;
