@@ -65,12 +65,29 @@ input:focus {
 }
 
 #radios {
+  position: relative;
+  min-height: 30px;
+}
+
+#radios > div {
+  position: absolute;
+  top: 0;
+  width: 100%;
   opacity: 0;
   -webkit-transition: opacity .2s ease-in-out;
 }
 
-#radios.active {
+#radios > div.active {
   opacity: 1;
+  z-index: 2;
+}
+
+#radios label {
+  cursor: pointer;
+}
+
+#radios input {
+  cursor: pointer;
 }
 
 button {

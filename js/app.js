@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var rate = document.querySelector('#rate');
   var weight = document.querySelector('#weight');
   var tenner = document.querySelector('#tenner');
-  var radios = document.querySelector('#radios');
+  var rateRadios = document.querySelector('#radios-rate');
+  var weightRadios = document.querySelector('#radios-weight');
   var share = document.querySelector('#share');
 
   var cashInput = function() {
@@ -21,12 +22,24 @@ document.addEventListener('DOMContentLoaded', function() {
     var cashValue = cash.value;
     var weightValue = weight.value;
 
-    var newWeightValue = (cashValue / value).toFixed(2);
-    if (newWeightValue.match(/.00/)) {
-      newWeightValue = parseInt(newWeightValue);
+    var radio = rateRadios.querySelector('input:checked').value;
+
+    if (radio == 'cash') {
+      var newCashValue = (value * weightValue).toFixed(2);
+      if (newCashValue.match(/.00/)) {
+        newCashValue = parseInt(newCashValue);
+      }
+
+      cash.value = newCashValue;
     }
+    else if (radio == 'weight') {
+      var newWeightValue = (cashValue / value).toFixed(2);
+      if (newWeightValue.match(/.00/)) {
+        newWeightValue = parseInt(newWeightValue);
+      }
 
       weight.value = newWeightValue;
+    }
   });
 
   weight.addEventListener('input', function() {
@@ -34,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var rateValue = rate.value;
     var cashValue = cash.value;
 
-    var radio = document.querySelector('input:checked').value;
+    var radio = weightRadios.querySelector('input:checked').value;
 
     if (radio == 'cash') {
       var newCashValue = (value * rateValue).toFixed(2);
@@ -55,11 +68,25 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   weight.addEventListener('focus', function() {
-    radios.classList.add('active');
+    rateRadios.classList.remove('active');
+    weightRadios.classList.add('active');
   });
 
   weight.addEventListener('blur', function() {
-    radios.classList.remove('active');
+   if (!weightRadios.querySelector('*:hover')) {
+      weightRadios.classList.remove('active');
+    }
+  });
+
+  rate.addEventListener('focus', function() {
+    weightRadios.classList.remove('active');
+    rateRadios.classList.add('active');
+  });
+
+  rate.addEventListener('blur', function() {
+    if (!rateRadios.querySelector('*:hover')) {
+      rateRadios.classList.remove('active');
+    }
   });
 
   tenner.addEventListener('click', function(e) {
@@ -68,6 +95,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     e.preventDefault();
   });
+
+  document.addEventListener('keyup', function(e) {
+    if (document.activeElement == rate || document.activeElement == weight) {
+      var radioInputs = document.querySelectorAll('#radios-' + document.activeElement.id + ' input');
+
+      if (e.keyCode === 37 || e.keyCode === 39) {
+        if (e.keyCode === 37) {
+          radioInputs[0].checked = true;
+          radioInputs[1].checked = false;
+        }
+        else if (e.keyCode === 39) {
+          radioInputs[0].checked = false;
+          radioInputs[1].checked = true;
+        }
+
+        e.preventDefault();
+      }
+    }
+  })
 
   var playableAudio = document.querySelectorAll('[data-type="audio"]');
   Array.prototype.forEach.call(playableAudio, function(playableElement) {

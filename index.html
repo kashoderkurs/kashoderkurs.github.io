@@ -13,10 +13,18 @@
     <h1 data-type="audio" data-src="files/cash-register.mp3">Kash oder Kurs</h1>
     <form>
       <div id="radios">
-        <label for="cash-radio">Cash</label>
-        <input type="radio" name="radio" id="cash-radio" value="cash">
-        <label for="rate-radio">Rate</label>
-        <input type="radio" name="radio" id="rate-radio" value="rate" checked>
+        <div id="radios-rate">
+          <label for="rate-cash-radio">Cash</label>
+          <input type="radio" name="radio-rate" id="rate-cash-radio" value="cash">
+          <label for="rate-weight-radio">Weight</label>
+          <input type="radio" name="radio-rate" id="rate-weight-radio" value="weight" checked>
+        </div>
+        <div id="radios-weight">
+          <label for="weight-cash-radio">Cash</label>
+          <input type="radio" name="radio-weight" id="weight-cash-radio" value="cash">
+          <label for="weight-rate-radio">Price per unit</label>
+          <input type="radio" name="radio-weight" id="weight-rate-radio" value="rate" checked>
+        </div>
       </div>
 
       <div id="inputs">
