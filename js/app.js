@@ -83,6 +83,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  if (playableAudio.length == 1) {
+    document.addEventListener('keydown', function(e) {
+      if (e.keyCode === 32) {
+        playableAudio[0].click();
+        e.preventDefault();
+      }
+    });
+  }
+
   share.addEventListener('click', function() {
     var width = share.getAttribute('data-width'), height = share.getAttribute('data-height'), url = share.getAttribute('data-url');
     var wx = (screen.width - width) >> 1, wy = (screen.height - height) >> 1;
