@@ -23,7 +23,6 @@ body {
 }
 
 h1 {
-  color: #1D2B08;
   font-weight: 300;
   font-size: 3em;
 }
@@ -108,6 +107,17 @@ button {
   color: #FFF;
   margin: 0;
   padding: 10px;
+}
+
+body.night {
+  background: #000;
+  color: #fff;
+}
+
+body.night input {
+  color: #fff;
+  background: #000;
+  border-color: #fff;
 }
 
 @media only screen and (max-width: 800px) {

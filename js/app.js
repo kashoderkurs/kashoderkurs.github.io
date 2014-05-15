@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+  var date = new Date();
+  var hours = date.getHours();
   var cash = document.querySelector('#cash');
   var rate = document.querySelector('#rate');
   var weight = document.querySelector('#weight');
@@ -6,6 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var rateRadios = document.querySelector('#radios-rate');
   var weightRadios = document.querySelector('#radios-weight');
   var share = document.querySelector('#share');
+
+  if (hours > 22 || hours < 7) {
+    document.body.classList.add('night');
+  }
 
   var cashInput = function() {
     var value = cash.value;
