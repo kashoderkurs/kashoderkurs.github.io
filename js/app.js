@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+  "use strict";
+
   var date = new Date();
   var hours = date.getHours();
   var cash = document.querySelector('#cash');
