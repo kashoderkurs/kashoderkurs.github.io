@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
   var hours = date.getHours();
   var cash = document.querySelector('#cash');
   var rate = document.querySelector('#rate');
-  var weight = document.querySelector('#weight');
+  var unit = document.querySelector('#unit');
   var tenner = document.querySelector('#tenner');
   var rateRadios = document.querySelector('#radios-rate');
-  var weightRadios = document.querySelector('#radios-weight');
+  var unitRadios = document.querySelector('#radios-unit');
   var share = document.querySelector('#share');
 
   if (hours > 22 || hours < 7) {
@@ -16,14 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
   var cashInput = function() {
     var value = cash.value;
     var rateValue = rate.value;
-    var weightValue = weight.value;
+    var unitValue = unit.value;
 
     if (!parseInt(value)) {
-      weight.value = 0;
+      unit.value = 0;
       return;
     }
 
-    weight.value = (value / rateValue).toFixed(1);
+    unit.value = (value / rateValue).toFixed(1);
   }
 
   cash.addEventListener('input', cashInput);
@@ -31,39 +31,39 @@ document.addEventListener('DOMContentLoaded', function() {
   rate.addEventListener('input', function() {
     var value = this.value;
     var cashValue = cash.value;
-    var weightValue = weight.value;
+    var unitValue = unit.value;
 
     var radio = rateRadios.querySelector('input:checked').value;
 
     if (radio == 'cash') {
-      var newCashValue = (value * weightValue).toFixed(2);
+      var newCashValue = (value * unitValue).toFixed(2);
       if (newCashValue.match(/.00/)) {
         newCashValue = parseInt(newCashValue);
       }
 
       cash.value = newCashValue;
     }
-    else if (radio == 'weight') {
+    else if (radio == 'unit') {
       if (!parseInt(value)) {
-        weight.value = 0;
+        unit.value = 0;
         return;
       }
 
-      var newWeightValue = (cashValue / value).toFixed(2);
-      if (newWeightValue.match(/.00/)) {
-        newWeightValue = parseInt(newWeightValue);
+      var newunitValue = (cashValue / value).toFixed(2);
+      if (newunitValue.match(/.00/)) {
+        newunitValue = parseInt(newunitValue);
       }
 
-      weight.value = newWeightValue;
+      unit.value = newunitValue;
     }
   });
 
-  weight.addEventListener('input', function() {
+  unit.addEventListener('input', function() {
     var value = this.value;
     var rateValue = rate.value;
     var cashValue = cash.value;
 
-    var radio = weightRadios.querySelector('input:checked').value;
+    var radio = unitRadios.querySelector('input:checked').value;
 
     if (radio == 'cash') {
       var newCashValue = (value * rateValue).toFixed(2);
@@ -88,19 +88,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  weight.addEventListener('focus', function() {
+  unit.addEventListener('focus', function() {
     rateRadios.classList.remove('active');
-    weightRadios.classList.add('active');
+    unitRadios.classList.add('active');
   });
 
-  weight.addEventListener('blur', function() {
-   if (!weightRadios.querySelector('*:hover')) {
-      weightRadios.classList.remove('active');
+  unit.addEventListener('blur', function() {
+   if (!unitRadios.querySelector('*:hover')) {
+      unitRadios.classList.remove('active');
     }
   });
 
   rate.addEventListener('focus', function() {
-    weightRadios.classList.remove('active');
+    unitRadios.classList.remove('active');
     rateRadios.classList.add('active');
   });
 
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   document.addEventListener('keyup', function(e) {
-    if (document.activeElement == rate || document.activeElement == weight) {
+    if (document.activeElement == rate || document.activeElement == unit) {
       var radioInputs = document.querySelectorAll('#radios-' + document.activeElement.id + ' input');
 
       if (e.keyCode === 37 || e.keyCode === 39) {

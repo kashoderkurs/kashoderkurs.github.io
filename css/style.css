@@ -81,10 +81,7 @@ input:focus {
   z-index: 2;
 }
 
-#radios label {
-  cursor: pointer;
-}
-
+#radios label,
 #radios input {
   cursor: pointer;
 }
