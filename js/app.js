@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var rateValue = rate.value;
     var weightValue = weight.value;
 
+    if (!parseInt(value)) {
+      weight.value = 0;
+      return;
+    }
+
     weight.value = (value / rateValue).toFixed(1);
   }
 
@@ -33,6 +38,11 @@ document.addEventListener('DOMContentLoaded', function() {
       cash.value = newCashValue;
     }
     else if (radio == 'weight') {
+      if (!parseInt(value)) {
+        weight.value = 0;
+        return;
+      }
+
       var newWeightValue = (cashValue / value).toFixed(2);
       if (newWeightValue.match(/.00/)) {
         newWeightValue = parseInt(newWeightValue);
@@ -58,6 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
       cash.value = newCashValue;
     }
     else if (radio == 'rate') {
+      if (!value) {
+        rate.value = 0;
+        return;
+      }
+
       var newRateValue = (cashValue / value).toFixed(2);
       if (newRateValue.match(/.00/)) {
         newRateValue = parseInt(newRateValue);
