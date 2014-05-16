@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var unitRadios = document.querySelector('#radios-unit');
   var share = document.querySelector('#share');
 
-  if (hours > 22 || hours < 7) {
+  if (hours > 21 || hours < 7) {
     document.body.classList.add('night');
   }
 
