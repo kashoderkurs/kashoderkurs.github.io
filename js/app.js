@@ -25,7 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    unit.value = (value / rateValue).toFixed(1);
+    var newUnitValue = (value / rateValue).toFixed(1);
+    if (newUnitValue.match(/.00/)) {
+      newUnitValue = parseInt(newUnitValue);
+    }
+
+    unit.value = newUnitValue;
   }
 
   cash.addEventListener('input', cashInput);
