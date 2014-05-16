@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var rateValue = rate.value;
     var unitValue = unit.value;
 
-    if (!parseInt(value)) {
+    if (!parseInt(rateValue)) {
       unit.value = 0;
       return;
     }
