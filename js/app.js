@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    var newUnitValue = (value / rateValue).toFixed(1);
+    var newUnitValue = (value / rateValue).toFixed(2);
     if (newUnitValue.match(/.00/)) {
       newUnitValue = parseInt(newUnitValue);
     }
