@@ -56,12 +56,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
 
-      var newunitValue = (cashValue / value).toFixed(2);
-      if (newunitValue.match(/.00/)) {
-        newunitValue = parseInt(newunitValue);
+      var newUnitValue = (cashValue / value).toFixed(2);
+      if (newUnitValue.match(/.00/)) {
+        newUnitValue = parseInt(newUnitValue);
       }
 
-      unit.value = newunitValue;
+      unit.value = newUnitValue;
     }
   });
 
