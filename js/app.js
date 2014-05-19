@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var cash = document.querySelector('#cash');
   var rate = document.querySelector('#rate');
   var unit = document.querySelector('#unit');
+  var inputs = [cash, rate, unit];
   var tenner = document.querySelector('#tenner');
   var rateRadios = document.querySelector('#radios-rate');
   var unitRadios = document.querySelector('#radios-unit');
@@ -13,6 +14,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (hours > 21 || hours < 7) {
     document.body.classList.add('night');
+  }
+
+  if (location.hash) {
+    var hash = location.hash.substr(1);
+    var hashValues = hash.split('/');
+
+    if (hashValues.length == 3 && (hashValues[0] / hashValues[1]).toFixed(2) == hashValues[2]) {
+      for (var i = 0, j = inputs.length; i < j; i++) {
+        inputs[i].value = hashValues[i];
+      }
+    }
+    else if (!!(window.history && history.pushState)) {
+      history.pushState(document.title, window.location.protocol + '//' + window.location.pathname + window.location.search);
+    }
   }
 
   var cashInput = function() {
@@ -123,6 +138,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     e.preventDefault();
   });
+
+  var updateHash = function() {
+    var hash = [];
+    for (var i = 0, j = inputs.length; i < j; i++) {
+      hash[i] = inputs[i].value;
+    }
+
+    location.hash = hash.join('/');
+  };
+
+  for (var i = 0, j = inputs.length; i < j; i++) {
+    inputs[i].addEventListener('input', function() {
+      updateHash();
+    });
+  }
 
   document.addEventListener('keyup', function(e) {
     if (document.activeElement == rate || document.activeElement == unit) {
