@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         inputs[i].value = '';
       }
       if (!!(window.history && history.pushState)) {
-        history.pushState(document.title, window.location.protocol + '//' + window.location.pathname + window.location.search);
+        history.pushState(document.title, '', window.location.protocol + '//' + location.host + window.location.pathname + window.location.search);
       }
     }
   }
