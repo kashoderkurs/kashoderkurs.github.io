@@ -25,8 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
         inputs[i].value = hashValues[i];
       }
     }
-    else if (!!(window.history && history.pushState)) {
-      history.pushState(document.title, window.location.protocol + '//' + window.location.pathname + window.location.search);
+    else {
+      for (var i = 0, j = inputs.length; i < j; i++) {
+        inputs[i].value = '';
+      }
+      if (!!(window.history && history.pushState)) {
+        history.pushState(document.title, window.location.protocol + '//' + window.location.pathname + window.location.search);
+      }
     }
   }
 
