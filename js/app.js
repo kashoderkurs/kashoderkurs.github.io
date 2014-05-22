@@ -20,8 +20,16 @@ document.addEventListener('DOMContentLoaded', function() {
     var hash = location.hash.substr(1);
     var hashValues = hash.split('/');
 
+    if (parseInt(hashValues[2]) == hashValues[2]) {
+      hashValues[2] = parseFloat(hashValues[2]).toFixed(2);
+    }
+
     if (hashValues.length == 3 && (hashValues[0] / hashValues[1]).toFixed(2) == hashValues[2]) {
       for (var i = 0, j = inputs.length; i < j; i++) {
+        if (hashValues[i].match(/.00/)) {
+          hashValues[i] = parseInt(hashValues[i]);
+        }
+
         inputs[i].value = hashValues[i];
       }
     }
