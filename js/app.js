@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var tenner = document.querySelector('#tenner');
   var rateRadios = document.querySelector('#radios-rate');
   var unitRadios = document.querySelector('#radios-unit');
-  var share = document.querySelector('#share');
 
   if (hours > 21 || hours < 7) {
     document.body.classList.add('night');
@@ -208,12 +207,4 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-
-  share.addEventListener('click', function() {
-    var width = share.getAttribute('data-width'), height = share.getAttribute('data-height'), url = share.getAttribute('data-url');
-    var wx = (screen.width - width) >> 1, wy = (screen.height - height) >> 1;
-
-    window.open(share.getAttribute('data-url'), '', "top=" + wy + ",left=" + wx + ",width=" + width + ",height=" + height);
-    return false;
-  });
 });
