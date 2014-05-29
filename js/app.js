@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (hashValues.length == 3 && (hashValues[0] / hashValues[1]).toFixed(2) == hashValues[2]) {
       for (var i = 0, j = inputs.length; i < j; i++) {
-        if (hashValues[i].match(/.00/)) {
+        if (hashValues[i].match(/\.00/)) {
           hashValues[i] = parseInt(hashValues[i]);
         }
 
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     var newUnitValue = (value / rateValue).toFixed(2);
-    if (newUnitValue.match(/.00/)) {
+    if (newUnitValue.match(/\.00/)) {
       newUnitValue = parseInt(newUnitValue);
     }
 
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (radio == 'cash') {
       var newCashValue = (value * unitValue).toFixed(2);
-      if (newCashValue.match(/.00/)) {
+      if (newCashValue.match(/\.00/)) {
         newCashValue = parseInt(newCashValue);
       }
 
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       var newUnitValue = (cashValue / value).toFixed(2);
-      if (newUnitValue.match(/.00/)) {
+      if (newUnitValue.match(/\.00/)) {
         newUnitValue = parseInt(newUnitValue);
       }
 
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (radio == 'cash') {
       var newCashValue = (value * rateValue).toFixed(2);
-      if (newCashValue.match(/.00/)) {
+      if (newCashValue.match(/\.00/)) {
         newCashValue = parseInt(newCashValue);
       }
 
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       var newRateValue = (cashValue / value).toFixed(2);
-      if (newRateValue.match(/.00/)) {
+      if (newRateValue.match(/\.00/)) {
         newRateValue = parseInt(newRateValue);
       }
 
