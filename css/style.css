@@ -92,19 +92,6 @@ button {
   bottom: 0;
 }
 
-#share {
-  display: block;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  width: 100%;
-  background: none;
-  border: 0;
-  background: #000;
-  color: #FFF;
-  margin: 0;
-  padding: 10px;
-}
 
 body.night {
   background: #000;
@@ -129,10 +116,5 @@ body.night input {
 
   input[type="number"] {
     max-width: 260px;
-  }
-
-  #share {
-    position: relative;
-    margin-top: 60px;
   }
 }
