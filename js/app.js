@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  var cashInput = function() {
+  cash.addEventListener('input', function() {
     var value = cash.value;
     var rateValue = rate.value;
     var unitValue = unit.value;
@@ -58,9 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     unit.value = newUnitValue;
-  }
-
-  cash.addEventListener('input', cashInput);
+  });
 
   rate.addEventListener('input', function() {
     var value = this.value;
@@ -146,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   tenner.addEventListener('click', function(e) {
     cash.value = 10;
-    cashInput();
 
     e.preventDefault();
   });
