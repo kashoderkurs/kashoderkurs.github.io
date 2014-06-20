@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var unit = document.querySelector('#unit');
   var inputs = [cash, rate, unit];
   var tenner = document.querySelector('#tenner');
+  var cashRadios = document.querySelector('#radios-cash');
   var rateRadios = document.querySelector('#radios-rate');
   var unitRadios = document.querySelector('#radios-unit');
 
@@ -47,17 +48,22 @@ document.addEventListener('DOMContentLoaded', function() {
     var rateValue = rate.value;
     var unitValue = unit.value;
 
-    if (!parseInt(rateValue)) {
-      unit.value = 0;
+    var radio = cashRadios.querySelector('input:checked').value;
+
+    var targetField = radio == 'rate' ? rate : unit;
+    var notTargetField = radio == 'rate' ? unit : rate;
+
+    if (!parseInt(targetField.value)) {
+      targetField.value = 0;
       return;
     }
 
-    var newUnitValue = (value / rateValue).toFixed(2);
-    if (newUnitValue.match(/\.00/)) {
-      newUnitValue = parseInt(newUnitValue);
+    var newValue = (value / notTargetField.value).toFixed(2);
+    if (newValue.match(/\.00/)) {
+      newValue = parseInt(newValue);
     }
 
-    unit.value = newUnitValue;
+    targetField.value = newValue;
   });
 
   rate.addEventListener('input', function() {
@@ -120,7 +126,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  cash.addEventListener('focus', function() {
+    rateRadios.classList.remove('active');
+    unitRadios.classList.remove('active');
+    cashRadios.classList.add('active');
+  });
+
+  cash.addEventListener('blur', function() {
+   if (!cashRadios.querySelector('*:hover')) {
+      cashRadios.classList.remove('active');
+    }
+  });
+
   unit.addEventListener('focus', function() {
+    cashRadios.classList.remove('active');
     rateRadios.classList.remove('active');
     unitRadios.classList.add('active');
   });
@@ -132,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   rate.addEventListener('focus', function() {
+    cashRadios.classList.remove('active');
     unitRadios.classList.remove('active');
     rateRadios.classList.add('active');
   });
@@ -164,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   document.addEventListener('keyup', function(e) {
-    if (document.activeElement == rate || document.activeElement == unit) {
+    if (document.activeElement == cash || document.activeElement == rate || document.activeElement == unit) {
       var radioInputs = document.querySelectorAll('#radios-' + document.activeElement.id + ' input');
 
       if (e.keyCode === 37 || e.keyCode === 39) {
