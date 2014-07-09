@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var targetField = radio == 'rate' ? rate : unit;
     var notTargetField = radio == 'rate' ? unit : rate;
 
-    if (!parseInt(targetField.value)) {
+    if (!parseInt(notTargetField.value)) {
       targetField.value = 0;
       return;
     }
