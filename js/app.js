@@ -1,6 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
   "use strict";
 
+  function fireEvent(element, event) {
+    if (document.createEventObject){
+      var evt = document.createEventObject();
+      return element.fireEvent('on' + event, evt);
+    }
+    else {
+      var evt = document.createEvent('HTMLEvents');
+      evt.initEvent(event, true, true);
+      return !element.dispatchEvent(evt);
+    }
+  }
+
   var date = new Date();
   var hours = date.getHours();
   var cash = document.querySelector('#cash');
@@ -164,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   tenner.addEventListener('click', function(e) {
     cash.value = 10;
+    fireEvent(cash, 'input');
 
     e.preventDefault();
   });
