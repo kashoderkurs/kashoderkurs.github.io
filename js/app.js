@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   var date = new Date();
+  var day = date.getDay();
   var hours = date.getHours();
   var cash = document.querySelector('#cash');
   var rate = document.querySelector('#rate');
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var rateRadios = document.querySelector('#radios-rate');
   var unitRadios = document.querySelector('#radios-unit');
 
-  if (hours > 21 || hours < 7) {
+  if ((hours > 21 || hours < 7) || day === 0 || day === 1 && hours < 13) {
     document.body.classList.add('night');
   }
 
